@@ -9,7 +9,7 @@
 
         <div class="col-lg-6">
           <div class="map mb-4 mb-lg-0">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 312px;" allowfullscreen></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d349.5604677111327!2d74.18285403708153!3d32.085172050674515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e0!4m0!4m5!1s0x391f2bace6bbffb1%3A0xf4396dc7f8f950ff!2sHafeez%20Plaza%2C%20Plot%2026%2C%20Markaz%20Avenue%20Canal%20View%2C%20Gujranwala%2C%20Punjab%2C%20Pakistan!3m2!1d32.0851334!2d74.18336049999999!5e0!3m2!1sen!2s!4v1720552940043!5m2!1sen!2s" frameborder="0" style="border:0; width: 100%; height: 312px;" allowfullscreen></iframe>
           </div>
         </div>
 

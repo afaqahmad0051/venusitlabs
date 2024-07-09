@@ -3,7 +3,7 @@
 
       <header class="section-header">
         <h3>Services</h3>
-        <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
+        <p>We offer top-notch software and web development services tailored to your needs.</p>
       </header>
 
       <div class="row">
