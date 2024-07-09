@@ -158,8 +158,9 @@ h6 {
 
 #header .logo img {
   padding: 0;
-  margin: 7px 0;
-  max-height: 26px;
+  /* margin: 7px 0; */
+  margin-top: -5px;
+  max-height: 54px;
 }
 
 .main-pages {
