@@ -41,18 +41,18 @@
     </div>
     <!-- loader END -->
     {{-- sidebar --}}
-    @include('admin.body.sidebar');
+    @include('admin.body.sidebar')
 
     <main class="main-content">
         {{-- header --}}
-        @include('admin.body.header');
+        @include('admin.body.header')
 
 
-        @include('admin.index')
+        @yield('content')
      
 
         <!-- Footer Section Start -->
-        @include('admin.body.footer');
+        @include('admin.body.footer')
         <!-- Footer Section End -->
     </main>
 

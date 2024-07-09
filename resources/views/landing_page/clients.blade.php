@@ -4,7 +4,7 @@
 
       <div class="section-header">
         <h3>Our CLients</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque dere santome nida.</p>
+        <p>Our satisfied clients trust us for exceptional software and web development services.</p>
       </div>
 
       <div class="row no-gutters clients-wrap clearfix wow fadeInUp">

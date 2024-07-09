@@ -2,7 +2,7 @@
     <div class="container">
       <div class="section-header">
         <h3>Team</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        <p>Our expert team delivers exceptional software and web development services.</p>
       </div>
 
       <div class="row">

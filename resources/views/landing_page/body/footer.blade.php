@@ -3,23 +3,25 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 footer-info">
+          <div class="col-lg-6 col-md-6 footer-info">
             <h3>VenusItLabs</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+            <p>Welcome to our company! We specialize in exceptional software and web development services. 
+              Our skilled team delivers high-quality solutions tailored to your needs, from web development to mobile applications. 
+              Trust us to bring your ideas to life with precision and excellence.</p>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Terms of service</a></li>
-              <li><a href="#">Privacy policy</a></li>
+              <li><a href="#intro">Home</a></li>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#team">Terms of service</a></li>
+              <li><a href="#contact">Contact Us</a></li>
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-contact">
+          <div class="col-lg-4 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
               A108 Adam Street <br>
@@ -30,23 +32,12 @@
             </p>
 
             <div class="social-links">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+              <a target="_blank" href="https://web.facebook.com/profile.php?id=61561732786311&mibextid=ZbWKwL&_rdc=1&_rdr" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a target="_blank" href="https://www.instagram.com/venusitlabs/?igsh=MTJiZTZpM3F0eW9vcA%3D%3D" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a target="_blank" href="https://www.linkedin.com/company/venusitlabs/" class="linkedin"><i class="fa fa-linkedin"></i></a>
             </div>
 
           </div>
-
-          <div class="col-lg-3 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit"  value="Subscribe">
-            </form>
-          </div>
-
         </div>
       </div>
     </div>
@@ -56,13 +47,7 @@
         &copy; Copyright <strong>VenusItLabs</strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!--
-          All the links in the footer should remain intact.
-          You can delete the links only if you purchased the pro version.
-          Licensing information: https://bootstrapmade.com/license/
-          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=NewBiz
-        -->
-        {{-- Servieces by <a href="https://bootstrapmade.com/">Afaq Ahmad</a> --}}
+        Servieces by <a href="https://www.linkedin.com/in/afaq-ahmad12/">Afaq Ahmad</a>
       </div>
     </div>
   </footer>
