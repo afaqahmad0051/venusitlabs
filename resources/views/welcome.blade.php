@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NewBiz Bootstrap Template</title>
+  <title>VenusItLabs</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -41,11 +41,11 @@
   Header
   ============================-->
  <!-- #header -->
-@include('Home_page.body.header');
+@include('landing_page.body.header');
   <!--==========================
     Intro Section
   ============================-->
-  @include('Home_page.Intro');
+  @include('landing_page.Intro');
  <!-- #intro -->
 
   <main id="main">
@@ -53,47 +53,47 @@
     <!--==========================
       About Us Section
     ============================-->
-    @include('Home_page.about');
+    @include('landing_page.about');
   <!-- #about -->
 
     <!--==========================
       Services Section
     ============================-->
-    @include('Home_page.services');
+    @include('landing_page.services');
    <!-- #services -->
 
     <!--==========================
       Why Us Section
     ============================-->
-  @include('Home_page.whyUs')
+  @include('landing_page.whyUs')
 
     <!--==========================
       Portfolio Section
     ============================-->
-    @include('Home_page.portfolio')
+    {{-- @include('landing_page.portfolio') --}}
    <!-- #portfolio -->
 
     <!--==========================
       Testimonials Section
     ============================-->
-    @include('Home_page.testimonials')
+    @include('landing_page.testimonials')
     <!-- #testimonials -->
 
     <!--==========================
       Team Section
     ============================-->
-    @include('Home_page.team')
+    @include('landing_page.team')
  <!-- #team -->
 
     <!--==========================
       Clients Section
     ============================-->
-   @include('Home_page.clients')
+   @include('landing_page.clients')
 
     <!--==========================
       Contact Section
     ============================-->
-    @include('Home_page.contact')
+    @include('landing_page.contact')
   <!-- #contact -->
 
   </main>
@@ -101,7 +101,7 @@
   <!--==========================
     Footer
   ============================-->
-  @include('Home_page.body.footer')
+  @include('landing_page.body.footer')
  <!-- #footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
