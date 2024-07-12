@@ -28,10 +28,8 @@ Route::middleware('auth')->group(function () {
     //columns of this table will be: title(string), description(long_text), logo/image(string)
     Route::prefix('services')->name('services.')->controller(ServicesController::class)->group(function () {
         Route::get('list', 'index')->name('list');
-        Route::get('form', 'create')->name('create');
-        Route::post('form', 'store')->name('store');
-        Route::get('form/{service}', 'edit')->name('edit');
-        Route::post('form/{service}', 'update')->name('update');
+        Route::get('form/{service?}', 'CreateOrEdit')->name('form');
+        Route::post('form/{service?}', 'save')->name('store');
         Route::get('delete/{service}', 'destroy')->name('delete');
     });
 

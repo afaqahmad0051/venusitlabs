@@ -23,7 +23,8 @@ class AboutUsController extends Controller
         ]);
 
     
-        $about->update($request->only(['title', 'description']));
+        $about->update(['title'=>$request->title]);
+        $about->update(['description'=>$request->description]);
 
         return redirect()->route('about.edit', $about->id)->with('success', 'About Us updated successfully');
     }

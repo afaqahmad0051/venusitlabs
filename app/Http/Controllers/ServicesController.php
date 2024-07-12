@@ -12,43 +12,44 @@ class ServicesController extends Controller
         $services = Services::all();
         return view('services',compact('$services'));
     }
-    // getting form to create a service
-    public function create(){
-        return view('services.create');
+    
+    // getting form to create or Edit a service 
+    public function CreateOrEdit(Services $service=null){
+        if ($service) {
+            return view('services.edit',compact('service'));
+        }
+        else {
+            return view('services.create');
+        }
     }
 
-    // creating a service
-    public function store(Request $request){
-
+    // creating a service and updating a service
+    public function save(Request $request, Services $service = null)
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'image' => 'required|string|max:255',
         ]);
 
-        Services::create($request->all());
+        if ($service) {
+            // Update the service
+            $service->update(['title'=>$request->title]);
+            $service->update(['description'=>$request->description]);
+            $service->update(['image'=>$request->image]);
+            $message = 'Service updated successfully.';
+        } else {
+            // Create a new service
+            Services::create($request->all());
+            $message = 'Service created successfully.';
+        }
 
         return redirect()->route('services.list')
-                         ->with('success', 'Service created successfully.');
+                         ->with('success', $message);
     }
 
-    // getting service to Edit
-    public function edit(Services $service){
-        return view('services.edit',compact('service'));
-    }
-    // updating the service
-    public function update(Request $request, Services $service){
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image' => 'required|string|max:255',
-            ]);
 
-            $service->update($request->all());
-            return redirect()->route('services.list')
-            ->with('success', 'Service updated successfully.');
-    }
     // deleting a service
     public function destroy(Services $service){
         $service->delete();
