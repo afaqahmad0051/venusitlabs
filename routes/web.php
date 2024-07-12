@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ServicesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,18 +21,19 @@ Route::middleware('auth')->group(function () {
 
     // We will have just one entry in about-us table and we will keep updating that one. Create a seeder for that one entry
     //columns of this table will be: title(string), description(long_text),
-    // Route::get('/about-us/{id}', [AboutUsController::class, 'update'])->name('about.update');
+    Route::get('/about-us/{about}', [AboutUsController::class, 'edit'])->name('about.edit');
+    Route::post('/about-us/{about}', [AboutUsController::class, 'update'])->name('about.update');
 
     //Services
     //columns of this table will be: title(string), description(long_text), logo/image(string)
-    // Route::prefix('services')->name('services.')->controller(ServicesController::class)->group(function () {
-    //     Route::get('list', 'index')->name('list');
-    //     Route::get('form', 'create')->name('create');
-    //     Route::post('form', 'store')->name('store');
-    //     Route::get('form/{id}', 'edit')->name('edit');
-    //     Route::post('form/{id}', 'update')->name('update');
-    //     Route::get('delete/{uuid}', 'destroy')->name('delete');
-    // });
+    Route::prefix('services')->name('services.')->controller(ServicesController::class)->group(function () {
+        Route::get('list', 'index')->name('list');
+        Route::get('form', 'create')->name('create');
+        Route::post('form', 'store')->name('store');
+        Route::get('form/{service}', 'edit')->name('edit');
+        Route::post('form/{service}', 'update')->name('update');
+        Route::get('delete/{service}', 'destroy')->name('delete');
+    });
 
     //Testimonials
     //columns of this table will be: name(string), qualification(string), short_info(text), image(string)
