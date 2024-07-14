@@ -8,17 +8,18 @@ use Illuminate\Http\Request;
 class ServicesController extends Controller
 {
     // getting list of all services
-    public function index(){
+    public function index()
+    {
         $services = Services::all();
-        return view('services',compact('$services'));
+        return view('services.list', compact('$services'));
     }
-    
+
     // getting form to create or Edit a service 
-    public function CreateOrEdit(Services $service=null){
+    public function CreateOrEdit(Services $service = null)
+    {
         if ($service) {
-            return view('services.edit',compact('service'));
-        }
-        else {
+            return view('services.edit', compact('service'));
+        } else {
             return view('services.create');
         }
     }
@@ -34,9 +35,9 @@ class ServicesController extends Controller
 
         if ($service) {
             // Update the service
-            $service->update(['title'=>$request->title]);
-            $service->update(['description'=>$request->description]);
-            $service->update(['image'=>$request->image]);
+            $service->update(['title' => $request->title]);
+            $service->update(['description' => $request->description]);
+            $service->update(['image' => $request->image]);
             $message = 'Service updated successfully.';
         } else {
             // Create a new service
@@ -45,16 +46,16 @@ class ServicesController extends Controller
         }
 
         return redirect()->route('services.list')
-                         ->with('success', $message);
+            ->with('success', $message);
     }
 
 
 
     // deleting a service
-    public function destroy(Services $service){
+    public function destroy(Services $service)
+    {
         $service->delete();
         return redirect()->route('services.list')
             ->with('success', 'Service deleted successfully.');
-        
     }
 }
