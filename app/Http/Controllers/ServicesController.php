@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Services;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServicesController extends Controller
 {
@@ -11,51 +12,65 @@ class ServicesController extends Controller
     public function index()
     {
         $services = Services::all();
-        return view('services.list', compact('$services'));
+
+        return view('admin.services.list', compact('services'));
     }
 
-    // getting form to create or Edit a service 
-    public function CreateOrEdit(Services $service = null)
+    // getting form to create or Edit a service
+    public function CreateOrEdit(?Services $service = null)
     {
-        if ($service) {
-            return view('services.edit', compact('service'));
-        } else {
-            return view('services.create');
-        }
+        return view('admin.services.form', compact('service'));
     }
 
     // creating a service and updating a service
-    public function save(Request $request, Services $service = null)
+    public function save(Request $request, ?Services $service = null)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|string|max:255',
+            'image' => 'required|image|max:2048',
         ]);
 
-        if ($service) {
-            // Update the service
-            $service->update(['title' => $request->title]);
-            $service->update(['description' => $request->description]);
-            $service->update(['image' => $request->image]);
-            $message = 'Service updated successfully.';
-        } else {
-            // Create a new service
-            Services::create($request->all());
-            $message = 'Service created successfully.';
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            if ($service && $service->image) {
+                Storage::disk('public')->delete('services/'.$service->image);
+            }
+
+            $imageName = 'service_'.now()->format('YmdHis').'.jpg';
+            // @phpstan-ignore-next-line
+            $imagePath = $request->file('image')->storeAs('services', $imageName, 'public');
+        } elseif ($service) {
+            $imagePath = $service->image;
         }
 
-        return redirect()->route('services.list')
-            ->with('success', $message);
+        $service = Services::updateOrCreate(
+            ['id' => $service ? $service->id : null],
+            [
+                'title' => $request->title,
+                'description' => $request->description,
+                'image' => $imagePath,
+            ]
+        );
+
+        $notification = [
+            'message' => 'Service created successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('services.list')->with($notification);
     }
-
-
 
     // deleting a service
     public function destroy(Services $service)
     {
         $service->delete();
-        return redirect()->route('services.list')
-            ->with('success', 'Service deleted successfully.');
+
+        $notification = [
+            'message' => 'Service deleted successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('services.list')->with($notification);
     }
 }

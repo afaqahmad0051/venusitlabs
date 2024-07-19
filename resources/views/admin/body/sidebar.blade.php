@@ -55,8 +55,8 @@ $route = Route::current()->getName()
                         </i>
                     </a>
                     <ul class="sub-nav collapse" id="sidebar-special" data-bs-parent="#sidebar-menu">
-                        <li class="nav-item {{ ($route == 'services.list')?'active':'' }}">
-                            <a class="nav-link " href="../dashboard/special-pages/billing.html">
+                        <li class="nav-item">
+                            <a class="nav-link {{ ($route == 'services.list')?'active':'' }}" href="{{ route('services.list') }}">
                               <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                         <g>
@@ -67,8 +67,8 @@ $route = Route::current()->getName()
                               <span class="item-name">All Services</span>
                             </a>
                         </li>
-                        <li class="nav-item {{ ($route == 'services.create')?'active':'' }}">
-                            <a class="nav-link " href="../dashboard/special-pages/calender.html">
+                        <li class="nav-item">
+                            <a class="nav-link {{ ($route == 'services.form')?'active':'' }}" href="{{ route('services.form') }}">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                         <g>

@@ -11,21 +11,22 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonials::all();
-        return view('testimonials.list', compact('$testimonials'));
+
+        return view('testimonials.list', compact('testimonials'));
     }
 
-    // getting form to create or Edit a service 
-    public function CreateOrEdit(Testimonials $testimonial = null)
+    // getting form to create or Edit a service
+    public function CreateOrEdit(?Testimonials $testimonial = null)
     {
         if ($testimonial) {
-            return view('testimonials.edit', compact('testimonials'));
+            return view('testimonials.edit', compact('testimonial'));
         } else {
             return view('testimonials.create');
         }
     }
 
     // creating a service and updating a service
-    public function save(Request $request, Testimonials $testimonial = null)
+    public function save(Request $request, ?Testimonials $testimonial = null)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -51,12 +52,11 @@ class TestimonialController extends Controller
             ->with('success', $message);
     }
 
-
-
     // deleting a service
     public function destroy(Testimonials $testimonial)
     {
         $testimonial->delete();
+
         return redirect()->route('testimonials.list')
             ->with('success', 'Testimonial deleted successfully.');
     }

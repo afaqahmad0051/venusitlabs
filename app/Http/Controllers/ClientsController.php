@@ -11,11 +11,12 @@ class ClientsController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return view('clients.list', compact('$clients'));
+
+        return view('clients.list', compact('clients'));
     }
 
-    // getting form to create or Edit a client 
-    public function CreateOrEdit(Client $client = null)
+    // getting form to create or Edit a client
+    public function CreateOrEdit(?Client $client = null)
     {
         if ($client) {
             return view('clients.edit', compact('client'));
@@ -25,7 +26,7 @@ class ClientsController extends Controller
     }
 
     // creating a client and updating a client
-    public function save(Request $request, Client $client = null)
+    public function save(Request $request, ?Client $client = null)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -47,12 +48,11 @@ class ClientsController extends Controller
             ->with('success', $message);
     }
 
-
-
     // deleting a client
     public function destroy(Client $client)
     {
         $client->delete();
+
         return redirect()->route('clients.list')
             ->with('success', 'client deleted successfully.');
     }

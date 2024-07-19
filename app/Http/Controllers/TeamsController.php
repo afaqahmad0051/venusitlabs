@@ -11,11 +11,12 @@ class TeamsController extends Controller
     public function index()
     {
         $team = Team::all();
-        return view('team.list', compact('$team'));
+
+        return view('team.list', compact('team'));
     }
 
     // getting form to create or Edit a team member
-    public function CreateOrEdit(Team $team = null)
+    public function CreateOrEdit(?Team $team = null)
     {
         if ($team) {
             return view('team.edit', compact('team'));
@@ -25,7 +26,7 @@ class TeamsController extends Controller
     }
 
     // creating a team member and updating a team member
-    public function save(Request $request, Team $team = null)
+    public function save(Request $request, ?Team $team = null)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -51,12 +52,11 @@ class TeamsController extends Controller
             ->with('success', $message);
     }
 
-
-
     // deleting a team member
     public function destroy(Team $team)
     {
         $team->delete();
+
         return redirect()->route('team.list')
             ->with('success', 'member deleted successfully.');
     }
