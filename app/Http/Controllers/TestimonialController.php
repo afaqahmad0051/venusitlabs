@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimonials;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TestimonialController extends Controller
 {
@@ -12,17 +13,13 @@ class TestimonialController extends Controller
     {
         $testimonials = Testimonials::all();
 
-        return view('testimonials.list', compact('testimonials'));
+        return view('admin.testimonials.list', compact('testimonials'));
     }
 
     // getting form to create or Edit a service
     public function CreateOrEdit(?Testimonials $testimonial = null)
     {
-        if ($testimonial) {
-            return view('testimonials.edit', compact('testimonial'));
-        } else {
-            return view('testimonials.create');
-        }
+        return view('admin.testimonials.form');
     }
 
     // creating a service and updating a service
@@ -32,24 +29,38 @@ class TestimonialController extends Controller
             'name' => 'required|string|max:255',
             'qualification' => 'required|string',
             'short_info' => 'required|text',
-            'image' => 'required|string|max:255',
+            'image' => 'required|image|max:2048',
         ]);
 
-        if ($testimonial) {
-            // Update the service
-            $testimonial->update(['name' => $request->name]);
-            $testimonial->update(['qualification' => $request->qualification]);
-            $testimonial->update(['short_info' => $request->short_info]);
-            $testimonial->update(['image' => $request->image]);
-            $message = 'Testimonial updated successfully.';
-        } else {
-            // Create a new service
-            Testimonials::create($request->all());
-            $message = 'Testimonial created successfully.';
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            if ($testimonial && $testimonial->image) {
+                Storage::disk('public')->delete('testimonials/' . $testimonial->image);
+            }
+
+            $imageName = '$testimonial_' . now()->format('YmdHis') . '.jpg';
+            // @phpstan-ignore-next-line
+            $imagePath = $request->file('image')->storeAs('testimonials', $imageName, 'public');
+        } elseif ($testimonial) {
+            $imagePath = $testimonial->image;
         }
 
-        return redirect()->route('testimonials.list')
-            ->with('success', $message);
+        $testimonial = Testimonials::updateOrCreate(
+            ['id' => $testimonial ? $testimonial->id : null],
+            [
+                'name' => $request->name,
+                'qualification' => $request->qualification,
+                'short_info' => '$request->short_info',
+                'image' => $imagePath,
+            ]
+        );
+
+        $notification = [
+            'message' => 'Testimonial created successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('testimonials.list')->with($notification);
     }
 
     // deleting a service
@@ -57,7 +68,12 @@ class TestimonialController extends Controller
     {
         $testimonial->delete();
 
+        $notification = [
+            'message' => 'Testimonial deleted successfully',
+            'alert-type' => 'success',
+        ];
+
         return redirect()->route('testimonials.list')
-            ->with('success', 'Testimonial deleted successfully.');
+            ->with($notification);
     }
 }
