@@ -19,7 +19,7 @@ class TestimonialController extends Controller
     // getting form to create or Edit a service
     public function CreateOrEdit(?Testimonials $testimonial = null)
     {
-        return view('admin.testimonials.form');
+        return view('admin.testimonials.form', compact('testimonial'));
     }
 
     // creating a service and updating a service

@@ -6,14 +6,14 @@
             <div class="col-sm-12 col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" @csrf
+                        <form method="post"
                             action="{{ route('testimonials.store',isset($testimonial->id)?$testimonial->id:'') }}"
                             enctype="multipart/form-data">
-
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="name">Title:</label>
+                                        <label class="form-label" for="name">Name:</label>
                                         <input type="text" name="name" class="form-control" id="name"
                                             value="{{ $testimonial?$testimonial->name:'' }}">
                                     </div>
