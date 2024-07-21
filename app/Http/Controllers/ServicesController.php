@@ -28,16 +28,16 @@ class ServicesController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|image|max:2048',
+            'image' => 'image|max:2048',
         ]);
 
         $imagePath = null;
         if ($request->hasFile('image')) {
             if ($service && $service->image) {
-                Storage::disk('public')->delete('services/' . $service->image);
+                Storage::disk('public')->delete('services/'.$service->image);
             }
 
-            $imageName = 'service_' . now()->format('YmdHis') . '.jpg';
+            $imageName = 'service_'.now()->format('YmdHis').'.jpg';
             // @phpstan-ignore-next-line
             $imagePath = $request->file('image')->storeAs('services', $imageName, 'public');
         } elseif ($service) {
@@ -53,8 +53,13 @@ class ServicesController extends Controller
             ]
         );
 
+        if ($service->wasRecentlyCreated) {
+            $message = 'Service created successfully.';
+        } else {
+            $message = 'Service updated successfully.';
+        }
         $notification = [
-            'message' => 'Service created successfully',
+            'message' => $message,
             'alert-type' => 'success',
         ];
 
@@ -64,6 +69,9 @@ class ServicesController extends Controller
     // deleting a service
     public function destroy(Services $service)
     {
+        if ($service->image) {
+            Storage::disk('public')->delete('services/'.$service->image);
+        }
         $service->delete();
 
         $notification = [

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClientsController extends Controller
 {
@@ -12,17 +13,13 @@ class ClientsController extends Controller
     {
         $clients = Client::all();
 
-        return view('clients.list', compact('clients'));
+        return view('admin.clients.list', compact('clients'));
     }
 
     // getting form to create or Edit a client
     public function CreateOrEdit(?Client $client = null)
     {
-        if ($client) {
-            return view('clients.edit', compact('client'));
-        } else {
-            return view('clients.create');
-        }
+        return view('admin.clients.form', compact('client'));
     }
 
     // creating a client and updating a client
@@ -30,27 +27,48 @@ class ClientsController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'image' => 'required|string|max:255',
+            'image' => 'image|max:2048',
         ]);
 
-        if ($client) {
-            // Update the client
-            $client->update(['title' => $request->title]);
-            $client->update(['image' => $request->image]);
-            $message = 'client updated successfully.';
-        } else {
-            // Create a new client
-            Client::create($request->all());
-            $message = 'client created successfully.';
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            if ($client && $client->image) {
+                Storage::disk('public')->delete('clients/'.$client->image);
+            }
+
+            $imageName = 'client_'.now()->format('YmdHis').'.jpg';
+            // @phpstan-ignore-next-line
+            $imagePath = $request->file('image')->storeAs('clients', $imageName, 'public');
+        } elseif ($client) {
+            $imagePath = $client->image;
         }
 
-        return redirect()->route('clients.list')
-            ->with('success', $message);
+        $client = Client::updateOrCreate(
+            ['id' => $client ? $client->id : null],
+            [
+                'name' => $request->name,
+                'image' => $imagePath,
+            ]
+        );
+        if ($client->wasRecentlyCreated) {
+            $message = 'Client created successfully.';
+        } else {
+            $message = 'Client updated successfully.';
+        }
+        $notification = [
+            'message' => $message,
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('clients.list')->with($notification);
     }
 
     // deleting a client
     public function destroy(Client $client)
     {
+        if ($client->image) {
+            Storage::disk('public')->delete('clients/'.$client->image);
+        }
         $client->delete();
 
         return redirect()->route('clients.list')

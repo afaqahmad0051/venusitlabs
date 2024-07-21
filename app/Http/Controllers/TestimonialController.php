@@ -29,16 +29,16 @@ class TestimonialController extends Controller
             'name' => 'required|string|max:255',
             'qualification' => 'required|string',
             'client_review' => 'required',
-            'image' => 'required|image|max:2048',
+            'image' => 'image|max:2048',
         ]);
 
         $imagePath = null;
         if ($request->hasFile('image')) {
             if ($testimonial && $testimonial->image) {
-                Storage::disk('public')->delete('testimonials/' . $testimonial->image);
+                Storage::disk('public')->delete('testimonials/'.$testimonial->image);
             }
 
-            $imageName = 'testimonial_' . now()->format('YmdHis') . '.jpg';
+            $imageName = 'testimonial_'.now()->format('YmdHis').'.jpg';
             // @phpstan-ignore-next-line
             $imagePath = $request->file('image')->storeAs('testimonials', $imageName, 'public');
         } elseif ($testimonial) {
@@ -55,8 +55,13 @@ class TestimonialController extends Controller
             ]
         );
 
+        if ($testimonial->wasRecentlyCreated) {
+            $message = 'Testimonial created successfully.';
+        } else {
+            $message = 'Testimonial updated successfully.';
+        }
         $notification = [
-            'message' => 'Testimonial created successfully',
+            'message' => $message,
             'alert-type' => 'success',
         ];
 
@@ -66,6 +71,9 @@ class TestimonialController extends Controller
     // deleting a service
     public function destroy(Testimonials $testimonial)
     {
+        if ($testimonial->image) {
+            Storage::disk('public')->delete('testimonials/'.$testimonial->image);
+        }
         $testimonial->delete();
 
         $notification = [

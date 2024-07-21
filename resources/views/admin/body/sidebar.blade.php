@@ -219,7 +219,7 @@ $route = Route::current()->getName()
                                         </g>
                                     </svg>
                                 </i>
-                                <span class="item-name">Create a Member</span>
+                                <span class="item-name">Create Member</span>
                             </a>
                         </li>
                     </ul>
@@ -250,7 +250,7 @@ $route = Route::current()->getName()
                                     fill="currentColor"></path>
                             </svg>
                         </i>
-                        <span class="item-name">CLients</span>
+                        <span class="item-name">Clients</span>
                         <i class="right-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -262,7 +262,7 @@ $route = Route::current()->getName()
                     <ul class="sub-nav collapse" id="sidebar-clients" data-bs-parent="#sidebar-menu">
                         <li class="nav-item">
                             <a class="nav-link {{ ($route == 'clients.list')?'active':'' }}"
-                                href="{{ route('services.list') }}">
+                                href="{{ route('clients.list') }}">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24"
                                         fill="currentColor">
@@ -276,7 +276,7 @@ $route = Route::current()->getName()
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ ($route == 'clients.form')?'active':'' }}"
-                                href="{{ route('services.form') }}">
+                                href="{{ route('clients.form') }}">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24"
                                         fill="currentColor">
