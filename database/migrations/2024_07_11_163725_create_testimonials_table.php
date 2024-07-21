@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('qualification');
-            $table->text('short_info');
+            $table->text('client_review');
             $table->string('image');
             $table->timestamps();
         });

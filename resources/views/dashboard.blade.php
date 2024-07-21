@@ -51,7 +51,7 @@
 
 
         @yield('content')
-     
+
 
         <!-- Footer Section Start -->
         @include('admin.body.footer')

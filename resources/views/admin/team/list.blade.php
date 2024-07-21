@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Testimonials</h4>
+                        <h4 class="card-title">Team</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -16,19 +16,19 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Qualification</th>
-                                    <th>ClientReview</th>
+                                    <th>Designation</th>
+                                    <th>Info</th>
                                     <th>Image</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($testimonials as $key => $item)
+                                @foreach ($team as $key => $item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ \Illuminate\Support\Str::limit($item->qualification, 20) }}</td>
-                                    <td>{{ $item->client_review }}</td>
+                                    <td>{{ $item->designation }}</td>
+                                    <td>{{ $item->short_info }}</td>
                                     <td>
                                         <img id="showImage"
                                             src="{{ $item->image ? asset('storage/' . $item->image) : asset('no_image.jpg') }}"
@@ -36,7 +36,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-sm btn-icon text-primary flex-end" data-bs-toggle="tooltip"
-                                            title="" href="{{ route('testimonials.form', $item->id) }}"
+                                            title="" href="{{ route('team.form', $item->id) }}"
                                             data-bs-original-title="Edit User">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"

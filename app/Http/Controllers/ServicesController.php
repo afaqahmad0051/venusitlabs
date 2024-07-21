@@ -34,10 +34,10 @@ class ServicesController extends Controller
         $imagePath = null;
         if ($request->hasFile('image')) {
             if ($service && $service->image) {
-                Storage::disk('public')->delete('services/'.$service->image);
+                Storage::disk('public')->delete('services/' . $service->image);
             }
 
-            $imageName = 'service_'.now()->format('YmdHis').'.jpg';
+            $imageName = 'service_' . now()->format('YmdHis') . '.jpg';
             // @phpstan-ignore-next-line
             $imagePath = $request->file('image')->storeAs('services', $imageName, 'public');
         } elseif ($service) {

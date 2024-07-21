@@ -28,7 +28,7 @@ class TestimonialController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'qualification' => 'required|string',
-            'short_info' => 'required|text',
+            'client_review' => 'required',
             'image' => 'required|image|max:2048',
         ]);
 
@@ -38,7 +38,7 @@ class TestimonialController extends Controller
                 Storage::disk('public')->delete('testimonials/' . $testimonial->image);
             }
 
-            $imageName = '$testimonial_' . now()->format('YmdHis') . '.jpg';
+            $imageName = 'testimonial_' . now()->format('YmdHis') . '.jpg';
             // @phpstan-ignore-next-line
             $imagePath = $request->file('image')->storeAs('testimonials', $imageName, 'public');
         } elseif ($testimonial) {
@@ -50,7 +50,7 @@ class TestimonialController extends Controller
             [
                 'name' => $request->name,
                 'qualification' => $request->qualification,
-                'short_info' => '$request->short_info',
+                'client_review' => $request->client_review,
                 'image' => $imagePath,
             ]
         );
