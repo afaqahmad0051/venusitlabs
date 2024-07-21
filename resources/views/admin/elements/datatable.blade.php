@@ -7,22 +7,17 @@
     <title>VenusItLabs | Admin Dashboard</title>
 
     <!-- Favicon -->
-    <link href="{{asset('frontend/assets/img/favicon.png')}}" rel="icon">
+    <link rel="shortcut icon" href="{{asset('backend/assets/images/favicon.ico')}}" />
 
     <!-- Library / Plugin Css Build -->
     <link rel="stylesheet" href="{{asset('backend/assets/css/core/libs.min.css')}}" />
 
-    <!-- Aos Animation Css -->
-    <link rel="stylesheet" href="{{asset('backend/assets/vendor/aos/dist/aos.css')}}" />
 
     <!-- Hope Ui Design System Css -->
     <link rel="stylesheet" href="{{asset('backend/assets/css/hope-ui.min.css?v=1.2.0')}}" />
 
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{asset('backend/assets/css/custom.min.css?v=1.2.0')}}" />
-
-    <!-- Dark Css -->
-    <link rel="stylesheet" href="{{asset('backend/assets/css/dark.min.css')}}" />
 
     <!-- Customizer Css -->
     <link rel="stylesheet" href="{{asset('backend/assets/css/customizer.min.css')}}" />
@@ -42,22 +37,17 @@
         </div>
     </div>
     <!-- loader END -->
+
     {{-- sidebar --}}
     @include('admin.body.sidebar')
-
     <main class="main-content">
         {{-- header --}}
         @include('admin.body.header')
-
-
         @yield('content')
-
-
         <!-- Footer Section Start -->
         @include('admin.body.footer')
         <!-- Footer Section End -->
     </main>
-
     <!-- Wrapper End-->
 
     <!-- Library Bundle Script -->
@@ -86,10 +76,10 @@
     <script src="{{asset('backend/assets/js/plugins/form-wizard.js')}}"></script>
 
     <!-- AOS Animation Plugin-->
-    <script src="{{asset('backend/assets/vendor/aos/dist/aos.js')}}"></script>
 
     <!-- App Script -->
     <script src="{{asset('backend/assets/js/hope-ui.js')}}" defer></script>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         @if (Session:: has('message'))
@@ -112,17 +102,6 @@
             break;
         }
         @endif
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#image').change(function(e){
-                var reader = new FileReader();
-                reader.onload = function(e){
-                    $('#showImage').attr('src',e.target.result);
-                }
-                reader.readAsDataURL(e.target.files['0']);
-            });
-        });
     </script>
 </body>
 
