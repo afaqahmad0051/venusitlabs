@@ -34,10 +34,10 @@ class TeamsController extends Controller
         $imagePath = null;
         if ($request->hasFile('image')) {
             if ($team && $team->image) {
-                Storage::disk('public')->delete('team/'.$team->image);
+                Storage::disk('public')->delete('team/' . $team->image);
             }
 
-            $imageName = 'team_'.now()->format('YmdHis').'.jpg';
+            $imageName = 'team_' . now()->format('YmdHis') . '.jpg';
             // @phpstan-ignore-next-line
             $imagePath = $request->file('image')->storeAs('team', $imageName, 'public');
         } elseif ($team) {
@@ -70,13 +70,13 @@ class TeamsController extends Controller
     public function destroy(Team $team)
     {
         if ($team->image) {
-            Storage::disk('public')->delete('team/'.$team->image);
+            Storage::disk('public')->delete('team/' . $team->image);
         }
         $team->delete();
 
         $notification = ['message' => 'Member deleted successfully', 'alert-type' => 'success'];
 
-        return redirect()->route('admin.team.list')
+        return redirect()->route('team.list')
             ->with($notification);
     }
 }

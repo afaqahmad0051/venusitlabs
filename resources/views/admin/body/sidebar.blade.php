@@ -291,7 +291,7 @@ $route = Route::current()->getName()
                     </ul>
                 </li>
                 {{-- contacts --}}
-                <li class="nav-item {{ ($prefix == '/contacts')?'open':'' }}">
+                <li class="nav-item {{ ($prefix == '/contactus')?'open':'' }}">
                     <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-contacts" role="button"
                         aria-expanded="false" aria-controls="sidebar-contacts">
                         <i class="icon">
@@ -327,8 +327,8 @@ $route = Route::current()->getName()
                     </a>
                     <ul class="sub-nav collapse" id="sidebar-contacts" data-bs-parent="#sidebar-menu">
                         <li class="nav-item">
-                            <a class="nav-link {{ ($route == 'contacts.list')?'active':'' }}"
-                                href="{{ route('services.list') }}">
+                            <a class="nav-link {{ ($route == 'contactus.list')?'active':'' }}"
+                                href="{{ route('contactus.list') }}">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24"
                                         fill="currentColor">

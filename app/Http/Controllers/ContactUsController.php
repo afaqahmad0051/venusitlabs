@@ -12,7 +12,7 @@ class ContactUsController extends Controller
     {
         $contacts = ContactUs::all();
 
-        return view('contacts.list', compact('contacts'));
+        return view('admin.contacts.list', compact('contacts'));
     }
 
     public function save(Request $request)
@@ -32,6 +32,7 @@ class ContactUsController extends Controller
             'message' => $request->message
         ]);
 
+
         return redirect()->route('home');
     }
     // viewing single contact
@@ -45,7 +46,13 @@ class ContactUsController extends Controller
     {
         $contact->delete();
 
-        return redirect()->route('contacts.list')
-            ->with('success', 'Contact deleted successfully.');
+        $message = 'Contact deleted Successfully';
+        $notification = [
+            'message' => $message,
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('contactus.list')
+            ->with($notification);
     }
 }
