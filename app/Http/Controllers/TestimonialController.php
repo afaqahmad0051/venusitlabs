@@ -35,10 +35,10 @@ class TestimonialController extends Controller
         $imagePath = null;
         if ($request->hasFile('image')) {
             if ($testimonial && $testimonial->image) {
-                Storage::disk('public')->delete('testimonials/'.$testimonial->image);
+                Storage::disk('public')->delete('testimonials/' . $testimonial->image);
             }
 
-            $imageName = 'testimonial_'.now()->format('YmdHis').'.jpg';
+            $imageName = 'testimonial_' . now()->format('YmdHis') . '.jpg';
             // @phpstan-ignore-next-line
             $imagePath = $request->file('image')->storeAs('testimonials', $imageName, 'public');
         } elseif ($testimonial) {
@@ -72,7 +72,7 @@ class TestimonialController extends Controller
     public function destroy(Testimonials $testimonial)
     {
         if ($testimonial->image) {
-            Storage::disk('public')->delete('testimonials/'.$testimonial->image);
+            Storage::disk('public')->delete('testimonials/' . $testimonial->image);
         }
         $testimonial->delete();
 

@@ -11,8 +11,9 @@ use App\Http\Controllers\TestimonialController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
+})->name('home');
+// contact form 
+Route::post('/contactForm', [ContactUsController::class, 'save'])->name('contact.store');
 // Admin Routes
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -75,4 +76,4 @@ Route::middleware('auth')->group(function () {
         Route::get('delete/{contact}', 'destroy')->name('delete');
     });
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
