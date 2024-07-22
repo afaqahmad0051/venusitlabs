@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
+use App\Notifications\ContactFormSubmitted;
+use Illuminate\Support\Facades\Notification;
 
 class ContactUsController extends Controller
 {
@@ -17,24 +19,29 @@ class ContactUsController extends Controller
 
     public function save(Request $request)
     {
-        $request->validate([
+        $requestParams = $request->validate([
             'user_name' => 'required|string|max:255',
             'user_email' => 'required|email',
             'subject' => 'required|string|max:255',
-            'message' => 'required'
+            'message' => 'required',
         ]);
-
 
         ContactUs::create([
-            'user_name' => $request->user_name,
-            'user_email' => $request->user_email,
-            'subject' => $request->subject,
-            'message' => $request->message
+            'user_name' => $requestParams['user_name'],
+            'user_email' => $requestParams['user_email'],
+            'subject' => $requestParams['subject'],
+            'message' => $requestParams['message'],
         ]);
+        Notification::route('mail', 'venusitlabs838@gmail.com')->notify(new ContactFormSubmitted($requestParams));
 
+        $notification = [
+            'message' => 'Your message has been submitted successfully',
+            'alert-type' => 'success',
+        ];
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with($notification);
     }
+
     // viewing single contact
     public function view(ContactUs $contact)
     {
