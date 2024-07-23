@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\WhyUsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,8 +27,16 @@ Route::middleware('auth')->group(function () {
 
     // We will have just one entry in about-us table and we will keep updating that one. Create a seeder for that one entry
     //columns of this table will be: title(string), description(long_text),
-    Route::get('/about-us/{about}', [AboutUsController::class, 'edit'])->name('about.edit');
-    Route::post('/about-us/{about}', [AboutUsController::class, 'update'])->name('about.update');
+    Route::get('/about-us/edit', [AboutUsController::class, 'edit'])->name('about.edit');
+    Route::post('/about-us/{id}', [AboutUsController::class, 'save'])->name('about.update');
+
+    // Why us
+    Route::prefix('whyUs')->name('whyUs.')->controller(WhyUsController::class)->group(function () {
+        Route::get('list', 'index')->name('list');
+        Route::get('form/{whyUs?}', 'CreateOrEdit')->name('form');
+        Route::post('form/{whyUs?}', 'save')->name('store');
+        Route::get('delete/{whyUs}', 'destroy')->name('delete');
+    });
 
     //Services
     //columns of this table will be: title(string), description(long_text), logo/image(string)

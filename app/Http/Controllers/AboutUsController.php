@@ -9,12 +9,15 @@ class AboutUsController extends Controller
 {
 
     // To get data
-    public function edit(AboutUs $about){
-        return view('about.edit', compact('about')); // change return view accordingly
+    public function edit()
+    {
+        $about = AboutUs::first();
+        return view('admin.about.form', compact('about')); // change return view accordingly
     }
 
-// to post data
-    public function update(Request $request,AboutUs $about){
+    // to post data
+    public function save(Request $request, $id)
+    {
 
         // validating the fetched form data 
         $request->validate([
@@ -22,10 +25,18 @@ class AboutUsController extends Controller
             'description' => 'required|string',
         ]);
 
-    
-        $about->update(['title'=>$request->title]);
-        $about->update(['description'=>$request->description]);
+        $about = AboutUs::findOrFail($id);
 
-        return redirect()->route('about.edit', $about->id)->with('success', 'About Us updated successfully');
+        $about->update([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+        ]);
+
+        $notification = [
+            'message' => 'About Us updated Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('about.edit')->with($notification);
     }
 }
