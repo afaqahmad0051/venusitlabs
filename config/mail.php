@@ -87,6 +87,12 @@ return [
             ],
         ],
 
+        'resend' => [
+            'transport' => 'resend',
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
+        ],
+
         'roundrobin' => [
             'transport' => 'roundrobin',
             'mailers' => [
