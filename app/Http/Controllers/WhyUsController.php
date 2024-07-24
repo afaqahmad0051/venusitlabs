@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class WhyUsController extends Controller
 {
-    // getting list of all cards
+
     public function index()
     {
         $whyUs = WhyUs::all();
@@ -16,13 +16,13 @@ class WhyUsController extends Controller
         return view('admin.whyus.list', compact('whyUs'));
     }
 
-    // getting form to create or Edit a card
+
     public function CreateOrEdit(?WhyUs $whyUs = null)
     {
         return view('admin.whyus.form', compact('whyUs'));
     }
 
-    // creating a card and updating a card
+
     public function save(Request $request, ?WhyUs $whyUs = null)
     {
         $request->validate([
@@ -50,9 +50,9 @@ class WhyUsController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()->route('whyUs.list')->with($notification);
+        return redirect()->route('why-us.list')->with($notification);
     }
-    // deleting a card
+
     public function destroy(WhyUs $whyUs)
     {
 
@@ -63,6 +63,6 @@ class WhyUsController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()->route('whyUs.list')->with($notification);
+        return redirect()->route('why-us.list')->with($notification);
     }
 }

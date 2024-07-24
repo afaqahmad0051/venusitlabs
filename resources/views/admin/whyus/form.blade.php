@@ -6,7 +6,7 @@
             <div class="col-sm-12 col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="{{ route('whyUs.store',isset($whyUs->id)?$whyUs->id:"") }}"
+                        <form method="post" action="{{ route('why-us.store',isset($whyUs->id)?$whyUs->id:"") }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -18,8 +18,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="description">Description:</label>
-                                        <textarea class="form-control" name="description"
-                                            id="exampleFormControlTextarea1"
+                                        <textarea class="form-control" name="description" id="description"
                                             rows="3">{{ $whyUs?$whyUs->description:'' }}</textarea>
                                     </div>
                                 </div>

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class TestimonialController extends Controller
 {
-    // getting list of all services
+
     public function index()
     {
         $testimonials = Testimonials::all();
@@ -16,13 +16,13 @@ class TestimonialController extends Controller
         return view('admin.testimonials.list', compact('testimonials'));
     }
 
-    // getting form to create or Edit a service
+
     public function CreateOrEdit(?Testimonials $testimonial = null)
     {
         return view('admin.testimonials.form', compact('testimonial'));
     }
 
-    // creating a service and updating a service
+
     public function save(Request $request, ?Testimonials $testimonial = null)
     {
         $request->validate([
@@ -39,7 +39,6 @@ class TestimonialController extends Controller
             }
 
             $imageName = 'testimonial_' . now()->format('YmdHis') . '.jpg';
-            // @phpstan-ignore-next-line
             $imagePath = $request->file('image')->storeAs('testimonials', $imageName, 'public');
         } elseif ($testimonial) {
             $imagePath = $testimonial->image;
@@ -68,7 +67,7 @@ class TestimonialController extends Controller
         return redirect()->route('testimonials.list')->with($notification);
     }
 
-    // deleting a service
+
     public function destroy(Testimonials $testimonial)
     {
         if ($testimonial->image) {

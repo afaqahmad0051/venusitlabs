@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
-    // getting list of all services
+
     public function index()
     {
         $services = Services::all();
@@ -15,13 +15,13 @@ class ServicesController extends Controller
         return view('admin.services.list', compact('services'));
     }
 
-    // getting form to create or Edit a service
+
     public function CreateOrEdit(?Services $service = null)
     {
         return view('admin.services.form', compact('service'));
     }
 
-    // creating a service and updating a service
+
     public function save(Request $request, ?Services $service = null)
     {
         $request->validate([
@@ -52,7 +52,7 @@ class ServicesController extends Controller
         return redirect()->route('services.list')->with($notification);
     }
 
-    // deleting a service
+
     public function destroy(Services $service)
     {
 

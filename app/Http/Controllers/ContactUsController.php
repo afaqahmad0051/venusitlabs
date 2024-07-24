@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Notification;
 
 class ContactUsController extends Controller
 {
-    // getting list of all Contacts
+
     public function index()
     {
         $contacts = ContactUs::all();
@@ -42,13 +42,13 @@ class ContactUsController extends Controller
         return redirect()->route('home')->with($notification);
     }
 
-    // viewing single contact
+
     public function view(ContactUs $contact)
     {
-        return view('contact.view', compact('contact'));
+        return view('admin.contacts.view', compact('contact'));
     }
 
-    // deleting a contact
+
     public function destroy(ContactUs $contact)
     {
         $contact->delete();
@@ -59,7 +59,7 @@ class ContactUsController extends Controller
             'alert-type' => 'success',
         ];
 
-        return redirect()->route('contactus.list')
+        return redirect()->route('contact-us.list')
             ->with($notification);
     }
 }

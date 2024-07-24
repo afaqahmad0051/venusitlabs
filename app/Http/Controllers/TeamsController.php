@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class TeamsController extends Controller
 {
-    // getting list of all team members
+
     public function index()
     {
         $team = Team::all();
@@ -16,13 +16,13 @@ class TeamsController extends Controller
         return view('admin.team.list', compact('team'));
     }
 
-    // getting form to create or Edit a team member
+
     public function CreateOrEdit(?Team $team = null)
     {
         return view('admin.team.form', compact('team'));
     }
 
-    // creating a team member and updating a team member
+
     public function save(Request $request, ?Team $team = null)
     {
         $request->validate([
@@ -38,7 +38,6 @@ class TeamsController extends Controller
             }
 
             $imageName = 'team_' . now()->format('YmdHis') . '.jpg';
-            // @phpstan-ignore-next-line
             $imagePath = $request->file('image')->storeAs('team', $imageName, 'public');
         } elseif ($team) {
             $imagePath = $team->image;
@@ -66,7 +65,6 @@ class TeamsController extends Controller
         return redirect()->route('team.list')->with($notification);
     }
 
-    // deleting a team member
     public function destroy(Team $team)
     {
         if ($team->image) {

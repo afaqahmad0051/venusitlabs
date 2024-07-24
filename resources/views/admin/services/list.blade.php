@@ -29,7 +29,7 @@
                                     <td>
                                         <a class="btn btn-sm btn-icon text-primary flex-end" data-bs-toggle="tooltip"
                                             title="" href="{{ route('services.form', $item->id) }}"
-                                            data-bs-original-title="Edit User">
+                                            data-bs-original-title="Edit Service">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +49,7 @@
                                         </a>
                                         <a class="btn btn-sm btn-icon text-danger " data-bs-toggle="tooltip" title=""
                                             href="{{ route('services.delete', $item->id) }}"
-                                            data-bs-original-title="Delete User">
+                                            data-bs-original-title="Delete Service">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg" stroke="currentColor">

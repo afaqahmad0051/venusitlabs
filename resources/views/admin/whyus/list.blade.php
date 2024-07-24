@@ -28,8 +28,8 @@
                                     <td>{{ \Illuminate\Support\Str::limit($item->description, 20) }}</td>
                                     <td>
                                         <a class="btn btn-sm btn-icon text-primary flex-end" data-bs-toggle="tooltip"
-                                            title="" href="{{ route('whyUs.form', $item->id) }}"
-                                            data-bs-original-title="Edit User">
+                                            title="" href="{{ route('why-us.form', $item->id) }}"
+                                            data-bs-original-title="Edit Card">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -48,8 +48,8 @@
                                             </span>
                                         </a>
                                         <a class="btn btn-sm btn-icon text-danger " data-bs-toggle="tooltip" title=""
-                                            href="{{ route('whyUs.delete', $item->id) }}"
-                                            data-bs-original-title="Delete User">
+                                            href="{{ route('why-us.delete', $item->id) }}"
+                                            data-bs-original-title="Delete Card">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
