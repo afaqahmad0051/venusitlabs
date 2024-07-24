@@ -1,5 +1,11 @@
 @extends('dashboard')
 @section('content')
+@php
+    $messagesCount = App\Models\ContactUs::count();
+    $clientsCount = App\Models\Client::count();
+    $testimonialsCount = App\Models\Testimonials::count();
+    $servicesCount = App\Models\Services::count();
+@endphp
 <div class="conatiner-fluid content-inner mt-n5 py-0">
     <div class="row">
         <div class="col-md-12 col-lg-12">
@@ -21,7 +27,7 @@
                                     </div>
                                     <div class="progress-detail">
                                         <p class="mb-2">New Messages</p>
-                                        <h4 class="counter">560K</h4>
+                                        <h4 class="counter">{{ isset($messagesCount)? $messagesCount : 0 }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +47,7 @@
                                     </div>
                                     <div class="progress-detail">
                                         <p class="mb-2">Total Clients</p>
-                                        <h4 class="counter">5</h4>
+                                        <h4 class="counter">{{ isset($clientsCount)? $clientsCount : 0 }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +66,7 @@
                                     </div>
                                     <div class="progress-detail">
                                         <p class="mb-2">Total Testimonials</p>
-                                        <h4 class="counter">60</h4>
+                                        <h4 class="counter">{{ isset($testimonialsCount)? $testimonialsCount : 0 }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +86,7 @@
                                     </div>
                                     <div class="progress-detail">
                                         <p class="mb-2">Total Services</p>
-                                        <h4 class="counter">742</h4>
+                                        <h4 class="counter">{{ isset($servicesCount)? $servicesCount : 0 }}</h4>
                                     </div>
                                 </div>
                             </div>
