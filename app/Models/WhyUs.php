@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Services extends Model
+class WhyUs extends Model
 {
     use HasFactory;
 
-    protected $table = 'services';
+
+    protected $table = 'why_us';
 
     protected $fillable = ['title', 'description'];
 }

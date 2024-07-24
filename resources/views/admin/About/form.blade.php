@@ -6,7 +6,7 @@
             <div class="col-sm-12 col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="{{ route('services.store',isset($service->id)?$service->id:"") }}"
+                        <form method="post" action="{{ route('about.update',$about->id) }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -14,13 +14,13 @@
                                     <div class="form-group">
                                         <label class="form-label" for="title">Title:</label>
                                         <input type="text" name="title" class="form-control" id="title"
-                                            value="{{ $service?$service->title:'' }}">
+                                            value="{{ $about->title}}">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="description">Description:</label>
                                         <textarea class="form-control" name="description"
                                             id="exampleFormControlTextarea1"
-                                            rows="3">{{ $service?$service->description:'' }}</textarea>
+                                            rows="3">{{ $about->description}}</textarea>
                                     </div>
                                 </div>
                             </div>

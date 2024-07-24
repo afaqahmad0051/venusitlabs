@@ -11,5 +11,5 @@ class ContactUs extends Model
 
     protected $table = 'contact_us';
 
-    protected $fillable = ['user_name', 'user_email', 'subject', 'message', 'company_address', 'company_phone', 'company_email'];
+    protected $fillable = ['user_name', 'user_email', 'subject', 'message'];
 }

@@ -56,7 +56,7 @@
                                             </span>
                                         </a>
                                         <a class="btn btn-sm btn-icon text-danger " data-bs-toggle="tooltip" title=""
-                                            href="{{ route('testimonials.delete', $item->id) }}"
+                                            href="{{ route('team.delete', $item->id) }}"
                                             data-bs-original-title="Delete User">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"

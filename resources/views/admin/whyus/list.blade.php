@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Services</h4>
+                        <h4 class="card-title">Cards</h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -21,14 +21,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($services as $key => $item)
+                                @foreach ($whyUs as $key => $item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ \Illuminate\Support\Str::limit($item->description, 20) }}</td>
                                     <td>
                                         <a class="btn btn-sm btn-icon text-primary flex-end" data-bs-toggle="tooltip"
-                                            title="" href="{{ route('services.form', $item->id) }}"
+                                            title="" href="{{ route('whyUs.form', $item->id) }}"
                                             data-bs-original-title="Edit User">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
@@ -48,7 +48,7 @@
                                             </span>
                                         </a>
                                         <a class="btn btn-sm btn-icon text-danger " data-bs-toggle="tooltip" title=""
-                                            href="{{ route('services.delete', $item->id) }}"
+                                            href="{{ route('whyUs.delete', $item->id) }}"
                                             data-bs-original-title="Delete User">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"

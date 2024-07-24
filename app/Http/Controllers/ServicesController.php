@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Services;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ServicesController extends Controller
 {
@@ -28,28 +27,15 @@ class ServicesController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'image|max:2048',
         ]);
 
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            if ($service && $service->image) {
-                Storage::disk('public')->delete('services/'.$service->image);
-            }
 
-            $imageName = 'service_'.now()->format('YmdHis').'.jpg';
-            // @phpstan-ignore-next-line
-            $imagePath = $request->file('image')->storeAs('services', $imageName, 'public');
-        } elseif ($service) {
-            $imagePath = $service->image;
-        }
 
         $service = Services::updateOrCreate(
             ['id' => $service ? $service->id : null],
             [
                 'title' => $request->title,
                 'description' => $request->description,
-                'image' => $imagePath,
             ]
         );
 
@@ -69,9 +55,7 @@ class ServicesController extends Controller
     // deleting a service
     public function destroy(Services $service)
     {
-        if ($service->image) {
-            Storage::disk('public')->delete('services/'.$service->image);
-        }
+
         $service->delete();
 
         $notification = [

@@ -15,7 +15,7 @@ class AboutUsSeeder extends Seeder
     {
         DB::table('about_us')->insert([
             'title' => 'About Us',
-            'description' => 'This is the description of the About Us section.'
+            'description' => 'At VenusItLabs, we specialize in crafting innovative software solutions that drive business success. Our expert team delivers custom software development, web and mobile applications, and IT consulting services tailored to meet your unique needs. Committed to quality and excellence, we leverage cutting-edge technologies to help businesses streamline operations, enhance user experiences, and achieve their strategic goals. Partner with us to transform your vision into reality and stay ahead in a digital-first world.'
         ]);
     }
 }
