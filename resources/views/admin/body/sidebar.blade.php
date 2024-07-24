@@ -115,7 +115,7 @@ $route = Route::current()->getName()
                                         </g>
                                     </svg>
                                 </i>
-                                <span class="item-name">Create a card</span>
+                                <span class="item-name">Create card</span>
                             </a>
                         </li>
                     </ul>
@@ -386,7 +386,7 @@ $route = Route::current()->getName()
                                         </g>
                                     </svg>
                                 </i>
-                                <span class="item-name">All Contacts</span>
+                                <span class="item-name">Contact Messages</span>
                             </a>
                         </li>
                     </ul>
