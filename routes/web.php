@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/about-us/edit', [AboutUsController::class, 'edit'])->name('about.edit');
     Route::post('/about-us/{id}', [AboutUsController::class, 'save'])->name('about.update');
 
-    Route::prefix('whyUs')->name('whyUs.')->controller(WhyUsController::class)->group(function () {
+    Route::prefix('why-us')->name('why-us.')->controller(WhyUsController::class)->group(function () {
         Route::get('list', 'index')->name('list');
         Route::get('form/{whyUs?}', 'CreateOrEdit')->name('form');
         Route::post('form/{whyUs?}', 'save')->name('store');
@@ -63,10 +63,10 @@ Route::middleware('auth')->group(function () {
         Route::get('delete/{client}', 'destroy')->name('delete');
     });
 
-    Route::prefix('contactus')->name('contactus.')->controller(ContactUsController::class)->group(function () {
+    Route::prefix('contact-us')->name('contact-us.')->controller(ContactUsController::class)->group(function () {
         Route::get('list', 'index')->name('list');
         Route::get('view/{contact}', 'view')->name('view');
         Route::get('delete/{contact}', 'destroy')->name('delete');
     });
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -16,7 +16,7 @@
 
           @foreach ( $testimonial as $testimonial)
           <div class="testimonial-item">
-            <img src="{{asset('storage/'.$testimonial->image) }}" class="testimonial-img" alt="">
+            <img src="{{asset('storage/'.$testimonial->image) }}" class="testimonial-img img-fluid" alt="">
             <h3>{{ $testimonial->name }}</h3>
             <h4>{{ $testimonial->qualification }}</h4>
             <p>

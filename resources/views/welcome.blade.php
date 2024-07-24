@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>VenusItLabs</title>
@@ -12,7 +13,8 @@
   <link href="{{asset('frontend/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+    rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
   <link href="{{asset('frontend/assets/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -42,38 +44,38 @@
   <!--==========================
   Header
   ============================-->
- <!-- #header -->
-@include('landing_page.body.header');
+  <!-- #header -->
+  @include('landing_page.body.header')
   <!--==========================
     Intro Section
   ============================-->
-  @include('landing_page.Intro');
- <!-- #intro -->
+  @include('landing_page.Intro')
+  <!-- #intro -->
 
   <main id="main">
 
     <!--==========================
       About Us Section
     ============================-->
-    @include('landing_page.about');
-  <!-- #about -->
+    @include('landing_page.about')
+    <!-- #about -->
 
     <!--==========================
       Services Section
     ============================-->
-    @include('landing_page.services');
-   <!-- #services -->
+    @include('landing_page.services')
+    <!-- #services -->
 
     <!--==========================
       Why Us Section
     ============================-->
-  @include('landing_page.whyUs')
+    @include('landing_page.whyUs')
 
     <!--==========================
       Portfolio Section
     ============================-->
     {{-- @include('landing_page.portfolio') --}}
-   <!-- #portfolio -->
+    <!-- #portfolio -->
 
     <!--==========================
       Testimonials Section
@@ -85,18 +87,18 @@
       Team Section
     ============================-->
     @include('landing_page.team')
- <!-- #team -->
+    <!-- #team -->
 
     <!--==========================
       Clients Section
     ============================-->
-   @include('landing_page.clients')
+    @include('landing_page.clients')
 
     <!--==========================
       Contact Section
     ============================-->
     @include('landing_page.contact')
-  <!-- #contact -->
+    <!-- #contact -->
 
   </main>
 
@@ -104,7 +106,7 @@
     Footer
   ============================-->
   @include('landing_page.body.footer')
- <!-- #footer -->
+  <!-- #footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
@@ -130,7 +132,7 @@
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script>
-      @if (Session:: has('message'))
+    @if (Session:: has('message'))
       var type = "{{ Session::get('alert-type','info') }}"
       switch (type) {
       case 'info':
@@ -153,4 +155,5 @@
   </script>
 
 </body>
+
 </html>

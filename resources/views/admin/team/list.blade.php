@@ -28,7 +28,7 @@
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->designation }}</td>
-                                    <td>{{ $item->short_info }}</td>
+                                    <td>{{ \Illuminate\Support\Str::limit($item->short_info,15) }}</td>
                                     <td>
                                         <img id="showImage"
                                             src="{{ $item->image ? asset('storage/' . $item->image) : asset('no_image.jpg') }}"
@@ -37,7 +37,7 @@
                                     <td>
                                         <a class="btn btn-sm btn-icon text-primary flex-end" data-bs-toggle="tooltip"
                                             title="" href="{{ route('team.form', $item->id) }}"
-                                            data-bs-original-title="Edit User">
+                                            data-bs-original-title="Edit Member">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +57,7 @@
                                         </a>
                                         <a class="btn btn-sm btn-icon text-danger " data-bs-toggle="tooltip" title=""
                                             href="{{ route('team.delete', $item->id) }}"
-                                            data-bs-original-title="Delete User">
+                                            data-bs-original-title="Delete Member">
                                             <span class="btn-inner">
                                                 <svg width="20" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg" stroke="currentColor">

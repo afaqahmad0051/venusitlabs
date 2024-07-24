@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ClientsController extends Controller
 {
-    // getting list of all clients
+
     public function index()
     {
         $clients = Client::all();
@@ -16,13 +16,13 @@ class ClientsController extends Controller
         return view('admin.clients.list', compact('clients'));
     }
 
-    // getting form to create or Edit a client
+
     public function CreateOrEdit(?Client $client = null)
     {
         return view('admin.clients.form', compact('client'));
     }
 
-    // creating a client and updating a client
+
     public function save(Request $request, ?Client $client = null)
     {
         $request->validate([
@@ -33,11 +33,10 @@ class ClientsController extends Controller
         $imagePath = null;
         if ($request->hasFile('image')) {
             if ($client && $client->image) {
-                Storage::disk('public')->delete('clients/'.$client->image);
+                Storage::disk('public')->delete('clients/' . $client->image);
             }
 
-            $imageName = 'client_'.now()->format('YmdHis').'.jpg';
-            // @phpstan-ignore-next-line
+            $imageName = 'client_' . now()->format('YmdHis') . '.jpg';
             $imagePath = $request->file('image')->storeAs('clients', $imageName, 'public');
         } elseif ($client) {
             $imagePath = $client->image;
@@ -63,11 +62,11 @@ class ClientsController extends Controller
         return redirect()->route('clients.list')->with($notification);
     }
 
-    // deleting a client
+
     public function destroy(Client $client)
     {
         if ($client->image) {
-            Storage::disk('public')->delete('clients/'.$client->image);
+            Storage::disk('public')->delete('clients/' . $client->image);
         }
         $client->delete();
 

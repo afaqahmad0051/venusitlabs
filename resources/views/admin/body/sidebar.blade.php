@@ -67,7 +67,7 @@ $route = Route::current()->getName()
                     </a>
                 </li>
                 {{-- Why US --}}
-                <li class="nav-item {{ ($prefix == '/whyUs')?'open':'' }}">
+                <li class="nav-item {{ ($prefix == '/why-us')?'open':'' }}">
                     <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-whyUs" role="button"
                         aria-expanded="false" aria-controls="sidebar-whyUs">
                         <i class="icon">
@@ -91,8 +91,8 @@ $route = Route::current()->getName()
                     </a>
                     <ul class="sub-nav collapse" id="sidebar-whyUs" data-bs-parent="#sidebar-menu">
                         <li class="nav-item">
-                            <a class="nav-link {{ ($route == 'whyUs.list')?'active':'' }}"
-                                href="{{ route('whyUs.list') }}">
+                            <a class="nav-link {{ ($route == 'why-us.list')?'active':'' }}"
+                                href="{{ route('why-us.list') }}">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24"
                                         fill="currentColor">
@@ -105,8 +105,8 @@ $route = Route::current()->getName()
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ ($route == 'whyUs.form')?'active':'' }}"
-                                href="{{ route('whyUs.form') }}">
+                            <a class="nav-link {{ ($route == 'why-us.form')?'active':'' }}"
+                                href="{{ route('why-us.form') }}">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24"
                                         fill="currentColor">
@@ -349,7 +349,7 @@ $route = Route::current()->getName()
                     </ul>
                 </li>
                 {{-- contacts --}}
-                <li class="nav-item {{ ($prefix == '/contactus')?'open':'' }}">
+                <li class="nav-item {{ ($prefix == '/contact-us')?'open':'' }}">
                     <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-contacts" role="button"
                         aria-expanded="false" aria-controls="sidebar-contacts">
                         <i class="icon">
@@ -376,8 +376,8 @@ $route = Route::current()->getName()
                     </a>
                     <ul class="sub-nav collapse" id="sidebar-contacts" data-bs-parent="#sidebar-menu">
                         <li class="nav-item">
-                            <a class="nav-link {{ ($route == 'contactus.list')?'active':'' }}"
-                                href="{{ route('contactus.list') }}">
+                            <a class="nav-link {{ ($route == 'contact-us.list')?'active':'' }}"
+                                href="{{ route('contact-us.list') }}">
                                 <i class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24"
                                         fill="currentColor">
