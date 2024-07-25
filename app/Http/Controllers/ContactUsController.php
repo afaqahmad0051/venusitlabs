@@ -22,7 +22,8 @@ class ContactUsController extends Controller
             'user_email' => 'required|email',
             'subject' => 'required|string|max:255',
             'message' => 'required',
-            'from_email' => 'required',
+            'from_email' => 'required|email',
+            'to_email' => 'required|email',
         ]);
 
         ContactUs::create([
@@ -36,7 +37,7 @@ class ContactUsController extends Controller
         $htmlContent = view('emails.contact_form_submitted', ['contactFormData' => $requestParams])->render();
         Resend::emails()->send([
             'from' => $requestParams['from_email'],
-            'to' => [$requestParams['user_email']],
+            'to' => [$requestParams['to_email']],
             'subject' => $requestParams['subject'],
             'html' => $htmlContent,
         ]);

@@ -45,7 +45,9 @@
               <div class="form-group col-lg-6">
                 <input type="email" class="form-control" name="user_email" id="user_email" placeholder="Your Email"
                   data-rule="email" data-msg="Please enter a valid email" />
-                <input type="hidden" class="form-control" name="from_email" value="mail@venusitlabs.com" id="user_email"
+                <input type="email" style="display: none" class="form-control" name="from_email" value="mail@venusitlabs.com" id="user_email"
+                data-rule="email" data-msg="Please enter a valid email" />
+                <input type="email" style="display: none" class="form-control" name="to_email" value="venusitlabs838@gmail.com" id="user_email"
                 data-rule="email" data-msg="Please enter a valid email" />
                 <div class="validation"></div>
               </div>
