@@ -10,7 +10,7 @@
       <div class="col-lg-6">
         <div class="map mb-4 mb-lg-0">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d349.5604677111327!2d74.18285403708153!3d32.085172050674515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e0!4m0!4m5!1s0x391f2bace6bbffb1%3A0xf4396dc7f8f950ff!2sHafeez%20Plaza%2C%20Plot%2026%2C%20Markaz%20Avenue%20Canal%20View%2C%20Gujranwala%2C%20Punjab%2C%20Pakistan!3m2!1d32.0851334!2d74.18336049999999!5e0!3m2!1sen!2s!4v1720552940043!5m2!1sen!2s"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380.41959464352!2d74.183487!3d32.084943599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3918d59ed565cc4b%3A0x709a9cdb67a5b332!2sTechcon%20Solution!5e0!3m2!1sen!2s!4v1721889668194!5m2!1sen!2s"
             frameborder="0" style="border:0; width: 100%; height: 312px;" allowfullscreen></iframe>
         </div>
       </div>
@@ -19,15 +19,17 @@
         <div class="row">
           <div class="col-md-5 info">
             <i class="ion-ios-location-outline"></i>
-            <p>A108 Adam Street, NY 535022</p>
+            <p>Al-Riaz Plaza 3rd Floor <br>
+              Main Market Canal View<br>
+              Gujranwala</p>
           </div>
           <div class="col-md-4 info">
             <i class="ion-ios-email-outline"></i>
-            <p>info@example.com</p>
+            <p>venusitlabs838@gmail.com</p>
           </div>
           <div class="col-md-3 info">
             <i class="ion-ios-telephone-outline"></i>
-            <p>+1 5589 55488 55</p>
+            <p>+92 308 8389005</p>
           </div>
         </div>
 
