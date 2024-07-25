@@ -12,7 +12,7 @@
       @endphp
       @foreach ($services as $service)
       <div class="card col-md-6 col-lg-5 wow bounceInUp m-3" data-wow-duration="1.4s">
-        <div class="card-body w-100 h-100">
+        <div class="card-body h-100">
           <h4 class="card-title" style="font-size: 1.3rem; font-weight:600"><a href="">{{ $service->title }}</a></h4>
           <p class="card-text">{{ $service->description }}</p>
         </div>

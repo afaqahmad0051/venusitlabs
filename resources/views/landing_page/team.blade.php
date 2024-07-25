@@ -12,7 +12,7 @@
 
       @foreach ($team as $member)
       <div class="col-lg-3 col-md-6 wow fadeInUp">
-        <div class="member w-75 h-100">
+        <div class="member">
           <img src="{{asset('storage/'.$member->image ) }}" class="img-fluid" alt="">
           <div class="member-info">
             <div class="member-info-content">
