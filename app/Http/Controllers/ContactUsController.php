@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\ContactUs;
 use Illuminate\Http\Request;
-use App\Notifications\ContactFormSubmitted;
-use Illuminate\Support\Facades\Notification;
+use Resend\Laravel\Facades\Resend;
 
 class ContactUsController extends Controller
 {
-
     public function index()
     {
         $contacts = ContactUs::all();
@@ -24,6 +22,7 @@ class ContactUsController extends Controller
             'user_email' => 'required|email',
             'subject' => 'required|string|max:255',
             'message' => 'required',
+            'from_email' => 'required',
         ]);
 
         ContactUs::create([
@@ -32,8 +31,15 @@ class ContactUsController extends Controller
             'subject' => $requestParams['subject'],
             'message' => $requestParams['message'],
         ]);
-        Notification::route('mail', 'venusitlabs838@gmail.com')->notify(new ContactFormSubmitted($requestParams));
+        // Notification::route('mail', 'afaqahmad@robustagency.co')->notify(new ContactFormSubmitted($requestParams));
 
+        $htmlContent = view('emails.contact_form_submitted', ['contactFormData' => $requestParams])->render();
+        Resend::emails()->send([
+            'from' => $requestParams['from_email'],
+            'to' => [$requestParams['user_email']],
+            'subject' => $requestParams['subject'],
+            'html' => $htmlContent,
+        ]);
         $notification = [
             'message' => 'Your message has been submitted successfully',
             'alert-type' => 'success',
@@ -42,12 +48,10 @@ class ContactUsController extends Controller
         return redirect()->route('home')->with($notification);
     }
 
-
     public function view(ContactUs $contact)
     {
         return view('admin.contacts.view', compact('contact'));
     }
-
 
     public function destroy(ContactUs $contact)
     {

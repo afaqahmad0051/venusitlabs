@@ -35,17 +35,8 @@ class ContactFormSubmitted extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('New Contact Form Submission')
-            ->greeting('Hello,')
-            ->line('You have received a new contact form submission from your website.')
-            ->line('Here are the details:')
-            ->line('**Name:** '.$this->contactFormData['user_name'])
-            ->line('**Email:** '.$this->contactFormData['user_email'])
-            ->line('**Subject:** '.$this->contactFormData['subject'])
-            ->line('**Message:**')
-            ->line($this->contactFormData['message'])
-            ->line('Please follow up with the user promptly to address their query.')
-            ->salutation('Best regards, VenusItLabs');
+            ->subject($this->contactFormData['subject'])
+            ->view('emails.contact_form_submitted', ['contactFormData' => $this->contactFormData]);
     }
 
     /**
